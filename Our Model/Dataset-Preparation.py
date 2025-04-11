@@ -4,7 +4,9 @@ import time
 import torch
 from ultralytics import YOLO
 
-# We are utilizing YoLoV8 model for dataset preparation.
+"""This code uses Ultralytics YOLOv8 model (https://github.com/ultralytics/ultralytics)
+and OpenCV for image annotation and label creation."""
+
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = YOLO('yolov8x.pt').to(device)
 print(f"Using device: {device}")
