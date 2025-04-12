@@ -1,20 +1,22 @@
 # DrebNet with Frequency-Domain Enhancements
 
-This project enhances the original DrebNet architecture by integrating recent advances in frequency-domain processing for image deblurring and restoration. Inspired by the paper *"Intriguing Findings of Frequency Selection for Image Deblurring"* (AAAI 2023), we introduce novel modules that improve the model's robustness and detail preservation under multi-degradation scenarios.
+This project enhances the original DrebNet architecture by integrating recent advances in frequency-domain processing for image deblurring and restoration.
+Inspired by the paper *"Intriguing Findings of Frequency Selection for Image Deblurring"* (AAAI 2023), 
+we introduce novel modules that improve the model's robustness and detail preservation under multi-degradation scenarios.
 
 ---
 
-## 🔍 Key Features
+## Key Features
 
-- **Res FFT-ReLU Blocks**: Residual blocks combining spatial and frequency-domain representations.
-- **Learnable Frequency Thresholding**: 1x1 convolutions learn to filter meaningful frequency components adaptively.
-- **Dual-Domain Learning**: Spatial and frequency streams are processed and fused for rich feature extraction.
-- **Visual FFT Attention**: Soft attention maps guide the model to high-frequency informative regions.
-- **Frequency-Aware Loss Function**: Enhances detail reconstruction by penalizing frequency-domain mismatches.
+- Res FFT-ReLU Blocks: Residual blocks combining spatial and frequency-domain representations.
+- Learnable Frequency Thresholding: 1x1 convolutions learn to filter meaningful frequency components adaptively.
+- Dual-Domain Learning: Spatial and frequency streams are processed and fused for rich feature extraction.
+- Visual FFT Attention: Soft attention maps guide the model to high-frequency informative regions.
+- Frequency-Aware Loss Function: Enhances detail reconstruction by penalizing frequency-domain mismatches.
 
 ---
 
-## 🧠 Architecture Overview
+## Architecture Overview
 
 ```
 Input → DualDomainExtractor → Res FFT-ReLU → FFT Attention → Res FFT-ReLU → Decoder → Output
@@ -22,7 +24,7 @@ Input → DualDomainExtractor → Res FFT-ReLU → FFT Attention → Res FFT-ReL
 
 ---
 
-## 🛠️ Setup
+##  Setup
 
 ### Dependencies
 - PyTorch
@@ -34,12 +36,12 @@ Install via pip:
 pip install torch torchvision
 ```
 
-### Dataset
+##Dataset
 Replace `YourDataset` in the code with your actual dataset class. Ensure it returns input-target pairs for deblurring.
 
 ---
 
-## 🚀 Training
+##Training
 ```bash
 python DrebNet_Main.py --epochs 20 --lr 1e-4 --batch_size 8 --device cuda
 ```
@@ -57,27 +59,10 @@ The loss used is:
 ```python
 L = L1(output, target) + α × Frequency_L1(FFT(output), FFT(target))
 ```
-This encourages the model to restore fine texture and high-frequency content lost in blurry images.
+# Each training epoch prints the average combined loss. You can also modify the script to visualize attention maps or FFT spectrums of outputs.
 
----
 
-## 📊 Outputs
-Each training epoch prints the average combined loss. You can also modify the script to visualize attention maps or FFT spectrums of outputs.
-
----
-
-## 🧪 Citation
-If using frequency-based enhancements, please cite the original paper:
-> Zhang et al. "Intriguing Findings of Frequency Selection for Image Deblurring." AAAI 2023
-
----
-
-## 🙌 Acknowledgements
-This implementation draws inspiration from the DrebNet architecture and recent work in dual-domain learning for vision tasks.
-
----
-
-For any questions or collaborations, feel free to reach out!
+# This implementation draws inspiration from the DrebNet architecture and recent work in dual-domain learning for vision tasks.
 
 
 # -------------------- Model and Training Code --------------------
