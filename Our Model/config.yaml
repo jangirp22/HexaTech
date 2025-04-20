@@ -1,0 +1,8 @@
+mode: train
+dataset: ./dataset/train/images
+annotation: ./dataset/train/annotations.json
+val_dataset: ./dataset/val/images
+val_annotation: ./dataset/val/annotations.json
+yolo_weights: yolov8n.pt
+output_json: ./results/train_output.json
+epochs: 20
